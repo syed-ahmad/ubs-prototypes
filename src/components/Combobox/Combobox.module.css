@@ -1,0 +1,125 @@
+.comboboxContainer {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 12px 16px;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  min-height: 44px;
+}
+
+.trigger:hover {
+  border-color: #9ca3af;
+}
+
+.trigger:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  border-color: #3b82f6;
+}
+
+.triggerOpen {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.triggerText {
+  flex: 1;
+  text-align: left;
+  color: #374151;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.triggerPlaceholder {
+  color: #9ca3af;
+}
+
+.triggerIcon {
+  margin-left: 8px;
+  color: #6b7280;
+  transition: transform 0.15s ease;
+  flex-shrink: 0;
+}
+
+.triggerIconOpen {
+  transform: rotate(180deg);
+}
+
+.content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  margin-top: 4px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.searchContainer {
+  padding: 12px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.searchInput:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.searchInput::placeholder {
+  color: #9ca3af;
+}
+
+.tableContainer {
+  max-height: 300px;
+  overflow: hidden;
+}
+
+.clearButton {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: color 0.15s ease;
+}
+
+.clearButton:hover {
+  color: #374151;
+}
+
+.clearButton:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
