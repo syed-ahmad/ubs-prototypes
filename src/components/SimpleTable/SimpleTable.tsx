@@ -6,8 +6,8 @@ export function SimpleTable<T extends TableRow = TableRow>({
   data,
   columns,
   onRowSelect,
-  height = 400,
-  width = 600,
+  height,
+  width,
   searchQuery = "",
 }: TableProps<T>) {
   const [selectedRowId, setSelectedRowId] = useState<string | number | null>(
@@ -100,7 +100,10 @@ export function SimpleTable<T extends TableRow = TableRow>({
 
   if (filteredData.length === 0) {
     return (
-      <div className={styles.tableContainer} style={{ height, width }}>
+      <div
+        className={styles.tableContainer}
+        style={{ height, width: width ? width : "100%" }}
+      >
         <div className={styles.noData}>
           {searchQuery ? "No matching results found" : "No data available"}
         </div>
@@ -109,7 +112,10 @@ export function SimpleTable<T extends TableRow = TableRow>({
   }
 
   return (
-    <div className={styles.tableContainer} style={{ height, width }}>
+    <div
+      className={styles.tableContainer}
+      style={{ height, width: width ? width : "100%" }}
+    >
       <div className={styles.tableWrapper}>
         <table
           ref={tableRef}

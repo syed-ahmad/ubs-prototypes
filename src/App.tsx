@@ -62,7 +62,7 @@ function App() {
                 onSelect={handleComboboxSelect}
                 variant="simple"
                 tableHeight={300}
-                tableWidth={600}
+                // tableWidth={600}
               />
             </div>
 
@@ -79,7 +79,7 @@ function App() {
                 onSelect={handleComboboxSelect}
                 variant="shadcn"
                 tableHeight={300}
-                tableWidth={600}
+                // tableWidth={600}
               />
             </div>
 

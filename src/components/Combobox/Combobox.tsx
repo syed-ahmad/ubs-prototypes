@@ -11,8 +11,8 @@ export function Combobox<T extends TableRow = TableRow>({
   displayColumns,
   placeholder = "Select an option...",
   onSelect,
-  tableHeight = 300,
-  tableWidth = 500,
+  tableHeight,
+  tableWidth,
   variant = "simple",
 }: ComboboxProps<T> & { variant?: "simple" | "shadcn" }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -159,7 +159,7 @@ export function Combobox<T extends TableRow = TableRow>({
                 value={searchQuery}
                 onChange={handleSearchChange}
                 onKeyDown={handleKeyDown}
-                style={{ paddingLeft: "36px" }}
+                // style={{ paddingLeft: "36px" }}
               />
             </div>
           </div>

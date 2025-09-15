@@ -9,7 +9,7 @@
 .tableWrapper {
   overflow: auto;
   max-height: 400px;
-  max-width: 600px;
+  /* max-width: 600px; */
 }
 
 .table {
@@ -84,7 +84,7 @@
 
 .noData {
   padding: 40px 20px;
-  text-align: center;
+  /* text-align: center; */
   color: #6b7280;
   font-style: italic;
 }
