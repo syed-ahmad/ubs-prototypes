@@ -17,6 +17,7 @@ export function Combobox<T extends TableRow = TableRow>({
 }: ComboboxProps<T> & { variant?: "simple" | "shadcn" }) {
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [selectedRow, setSelectedRow] = useState<T | null>(null);
   const [selectedValues, setSelectedValues] = useState<string[]>([]);
 
@@ -37,6 +38,7 @@ export function Combobox<T extends TableRow = TableRow>({
     }
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleRowSelect = (row: T, values: string[]) => {
     const displayValues = displayColumns.map((columnId) => {
       const column = columns.find((col) => col.id === columnId);
