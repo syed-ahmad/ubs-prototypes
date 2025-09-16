@@ -53,7 +53,7 @@ export function Combobox<T extends TableRow = TableRow>({
     setSelectedRow(row);
     setSelectedValues(displayValues);
     setIsOpen(false);
-    setSearchQuery("");
+    // setSearchQuery("");
 
     if (onSelect) {
       onSelect(row, displayValues);
@@ -103,79 +103,84 @@ export function Combobox<T extends TableRow = TableRow>({
   const TableComponent = variant === "shadcn" ? ShadcnTable : SimpleTable;
 
   return (
-    <div className={styles.comboboxContainer} ref={containerRef}>
-      <button
-        ref={triggerRef}
-        className={`${styles.trigger} ${isOpen ? styles.triggerOpen : ""}`}
-        onClick={handleToggle}
-        aria-expanded={isOpen}
-        aria-haspopup="listbox"
-        type="button"
-      >
-        <span
-          className={`${styles.triggerText} ${
-            selectedValues.length === 0 ? styles.triggerPlaceholder : ""
-          }`}
+    <>
+      <pre style={{ color: "GrayText" }}>
+        {JSON.stringify({ displayText, searchQuery }, null, 2)}
+      </pre>
+      <div className={styles.comboboxContainer} ref={containerRef}>
+        <button
+          ref={triggerRef}
+          className={`${styles.trigger} ${isOpen ? styles.triggerOpen : ""}`}
+          onClick={handleToggle}
+          aria-expanded={isOpen}
+          aria-haspopup="listbox"
+          type="button"
         >
-          {displayText}
-        </span>
-
-        {selectedValues.length > 0 && (
-          <button
-            className={styles.clearButton}
-            onClick={handleClear}
-            aria-label="Clear selection"
-            type="button"
+          <span
+            className={`${styles.triggerText} ${
+              selectedValues.length === 0 ? styles.triggerPlaceholder : ""
+            }`}
           >
-            <X size={16} />
-          </button>
-        )}
+            {displayText}
+          </span>
 
-        <ChevronDown
-          size={16}
-          className={`${styles.triggerIcon} ${isOpen ? styles.triggerIconOpen : ""}`}
-        />
-      </button>
+          {selectedValues.length > 0 && (
+            <button
+              className={styles.clearButton}
+              onClick={handleClear}
+              aria-label="Clear selection"
+              type="button"
+            >
+              <X size={16} />
+            </button>
+          )}
 
-      {isOpen && (
-        <div className={styles.content} role="listbox">
-          <div className={styles.searchContainer}>
-            <div style={{ position: "relative" }}>
-              <Search
-                size={16}
-                style={{
-                  position: "absolute",
-                  left: "12px",
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                  color: "#9ca3af",
-                }}
-              />
-              <input
-                ref={searchInputRef}
-                type="text"
-                className={styles.searchInput}
-                placeholder="Search..."
-                value={searchQuery}
-                onChange={handleSearchChange}
-                onKeyDown={handleKeyDown}
-                // style={{ paddingLeft: "36px" }}
+          <ChevronDown
+            size={16}
+            className={`${styles.triggerIcon} ${isOpen ? styles.triggerIconOpen : ""}`}
+          />
+        </button>
+
+        {isOpen && (
+          <div className={styles.content} role="listbox">
+            <div className={styles.searchContainer}>
+              <div style={{ position: "relative" }}>
+                <Search
+                  size={16}
+                  style={{
+                    position: "absolute",
+                    left: "12px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    color: "#9ca3af",
+                  }}
+                />
+                <input
+                  ref={searchInputRef}
+                  type="text"
+                  className={styles.searchInput}
+                  placeholder="Search..."
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                  onKeyDown={handleKeyDown}
+                  // style={{ paddingLeft: "36px" }}
+                />
+              </div>
+            </div>
+
+            <div className={styles.tableContainer}>
+              <TableComponent
+                data={data}
+                columns={columns}
+                onRowSelect={handleRowSelect}
+                height={tableHeight}
+                width={tableWidth}
+                searchQuery={searchQuery}
               />
             </div>
           </div>
-
-          <div className={styles.tableContainer}>
-            <TableComponent
-              data={data}
-              columns={columns}
-              onRowSelect={handleRowSelect}
-              height={tableHeight}
-              width={tableWidth}
-              searchQuery={searchQuery}
-            />
-          </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </>
   );
 }
